@@ -1,0 +1,174 @@
+body{
+    margin: 0;
+    font-family: Roboto;
+    color: #0D0D0D;
+}
+
+
+.titulo{
+    width: 85%;
+    left: 15%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}
+
+h1{
+    position: absolute;
+    margin: 10px 50%;
+    font-size: 32px;
+    font-weight: 900;
+    width: 410px;
+    height: auto;
+    background: #FFFFFF;
+    text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+    color: #023859;
+    letter-spacing: 10px;
+    
+}
+
+/* ******* BOTON ******** */
+
+
+button{
+    outline:none;
+    border-radius: 5px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+button:hover{
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/*   ***** ******** */
+
+.slideimg{
+    position: absolute;
+    width: 80%;
+    margin-left: 18%;
+    top: 71px;
+}
+.slideimg .imgIndexSlide{
+    width: 100%;
+    max-height: 480px;
+    height:350px;
+}
+.slideimg .icons{
+    position: absolute;
+    width: 3%;
+    top: 50%;
+    cursor: pointer;
+}
+.slideimg .active{
+    background-color: #3A6D8C;
+}
+.next{
+    right:0;
+}
+.back{
+    left:0;
+}
+.slideimg div{
+    text-align: center;
+    margin-top: -35px;
+}
+.slideimg button {
+    border-radius: 20px;
+    height: 15px;
+    width: 15px;
+    border: none;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: #F2F2F2;
+}
+.RedesSociales{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    width: 80%;
+    margin-left: 18%;
+    top: 480px;
+}
+.RedesSociales div{
+    border-radius: 10px;
+    text-align: center;
+    border: solid 1px #023859;
+    color:#023859;
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 41px;
+
+}
+.RedesSociales div button{
+    margin-top: 10px;
+    width: 80%;
+    padding: 10px;
+    font-size: 1.2vw;
+    border-radius: 20px;
+
+    color: #F2F2F2;
+    border: none;
+    cursor: pointer;
+}
+.RedesSociales img{
+    width: 20%;
+}
+.RedesSociales h2{
+    font-size: 14px;
+}
+@media (max-width: 600px) {
+    
+    .slideimg{
+    margin-left: 10%;
+    top: 120px;
+    width: 80%;
+
+}
+.slideimg .imgIndexSlide{
+    height:150px;
+}
+
+.RedesSociales{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 10%;
+    top: 350px;
+}
+.RedesSociales img{
+    width: 20%;
+}
+
+.RedesSociales div{
+    width: 90%;
+    padding: 2px;
+    margin-bottom: 41px;
+}
+.RedesSociales h2{
+    font-size: 3.5vw;
+}
+.RedesSociales div button{
+    margin-top: 10px;
+    width: 50%;
+    padding:5%;
+    font-size: 3vw;
+    
+}
+
+.titulo{
+
+    left: 10%;
+}
+
+h1{
+    font-size: 22px;
+    width: 325px;
+}
+
+
+
+}

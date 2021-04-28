@@ -1,0 +1,66 @@
+body{
+    margin: 0;
+    font-family: Roboto;
+}
+header{
+    background-color: #3A6D8C;
+    padding: 30px;
+}
+header h1{
+    color: #F2F2F2;
+    width: 20%;
+    margin: 0 auto;
+    text-align: center;
+}
+.datosAlumno{
+    width: 70%;
+    margin: 40px auto;  
+}
+.datosAlumno div{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+.datosAlumno h3,p{
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.datosAlumno p{
+    margin-left: 10px;
+    margin-right: 40px;
+}
+.SectionTablaReporte{
+    width: 70%;
+    margin: 40px auto;  
+}
+.TablaReporte{
+    width: 100%;
+    border-spacing: 0px 20px;
+}
+.tbody{
+    text-align: center;
+    margin-top: 40px;
+}
+.tbody #info{
+    background-color: #3A6D8C;
+    padding: 20px;
+    color: #F2F2F2;
+}
+.tbody #infonotas{
+    background-color: #F2F2F2;
+    border: 30px solid #FFFFFF;
+    border-top: 0px;
+    border-bottom: 0px;
+}
+.buttonImprimir{
+    padding: 12px 20px;
+    border: none;
+    background-color: #3A6D8C;
+    color: #f2f2f2;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 40px;
+    float: right;
+}

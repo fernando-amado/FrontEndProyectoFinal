@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/styles/NavbarStyles.css">
+    <link rel="stylesheet" href="../assets/styles/StyleForms.css">
+    <link rel="icon" href="../assets/icons/School.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="../assets/main.css">
+    <title>Colegio Grande - Materias</title>
+</head>
+
+<body>
+    <img class="Icono hamburguesa" src="../assets/icons/menu.svg" alt="">
+    <nav class="nav-bar ver">
+        <ul class="menu">
+
+            <a href="../index.html"> <li> <img src="../assets/icons/home 1.svg" alt="Icono Incio"> INICIO</li></a>
+            <a href="maestros.html"><li> <img src="../assets/icons/aula 1.svg" alt="Icono Maestros"> DOCENTES</li></a>
+            <a href="materias.html"><li> <img src="../assets/icons/libro 1.svg" alt="Icono Materias"> MATERIAS<ul class="submenu">
+                <li><a href="asignar_materia_profesor.html">Docente</a></li>
+                <li><a href="asignar_materia_alumno.html">Alumno</a></li>
+                </ul></li></a>
+            <a href="alumnos.html"><li> <img src="../assets/icons/sombrero-de-graduacion 1.svg" alt="Icono Alumnos"> ALUMNOS</li></a>
+            <a href="notas.html"><li > <img src="../assets/icons/los-grados 1.svg" alt="Icono Notas"> NOTAS</li></a>
+            <a href="periodos.html"><li > <img src="../assets/icons/periodos.svg" alt="Icono Notas"> PERIODOS</li></a>
+            <a href="reportes.html"><li> <img src="../assets/icons/lista-de-verificacion 1.svg" alt="Icono Reportes"> REPORTES</li></a>
+            </ul>
+
+    </nav>
+
+    <section class="seccionFormulario ver hidden">
+        <div class=" mb-3">
+
+        <h1 class="tituloForm">Agregar Materia</h1>
+        <form action="" class="frm formulario" id="formulario">
+            <div class="contenedorInputs">
+                <div>
+                    <div class="formulario__grupo" id="grupo__nombre">
+                        <label for="nombre" class="formulario__label">Nombre de la materia:</label>
+                        <div class="formulario__grupo-input">
+                        <input type="text" id="nombre" class="formulario__input"name="nombre" placeholder="Escribe el Nombre">
+                        <i class="formulario__validacion-estado documento fas fa-times-circle"></i>
+                    </div>
+                    <p class="formulario__input-error">El nombre debe tener al menos un digito y solo puede contener letras</p>
+
+                    </div>
+                </div>
+                <div class="formulario__mensaje" id="formulario__mensaje">
+                    <p><i class="fas fa-exclamation-triangle"></i><b>Error: </b> Por favor ingrese los campos
+                        correctamente.</p>
+                </div>
+</div>
+  <div class="buttons formulario__grupo formulario__grupo-btn-enviar">
+                    <input type="submit" class="formulario__btn" value="Agregar" id="ButtonAdd">
+                    <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado con Exito!!
+                    </p>
+                </div>
+            </form>
+        </div>
+        <hr>
+    </section>
+
+    <section class="seccionTabla ver hidden">
+        <div class="encabezadoTabla">
+            <h1 class="tituloTabla">Gestionar Materias</h1>
+            <div>
+                <input class="form-control col-md-6 light-table-filter" data-table="order-table" type="text"
+                    placeholder="Buscar..." id="BuscarId">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table id="example" class="table table-bordered order-table " style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Nombre de la Materia</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modalUpdate">
+        <div class="headerModal">
+            <h2>Editar Materia</h2>
+            <input type="button" value="X" class="cerrar" id="ButtonCloseEditar" onclick="CloseUpdate()">
+        </div>
+        <form class="frmEditar formulario">
+            <div class="contenedorInputsEditar">
+                <div>
+                    <label for="materia">Materia:</label>
+                    <input type="hidden" id="idMateria">
+                    <input type="text" id="nombreEditar" placeholder="Nombre De La Materia">
+                </div>
+            </div>
+            <div class="buttonsEditar">
+                <input type="button" value="Guardar Cambios" class="guardarCambios" id="ButtonAddEditar">
+            </div>
+        </form>
+    </div>
+    <script src="../assets/JavaScript/funcionesExternas.js"></script>
+    <script src="../assets/JavaScript/Materia.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " > </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="../assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../assets/popper/popper.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

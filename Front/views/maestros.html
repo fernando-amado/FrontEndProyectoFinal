@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/styles/NavbarStyles.css">
+    <link rel="stylesheet" href="../assets/styles/StyleForms.css">
+    <link rel="icon" href="../assets/icons/School.ico">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="../assets/main.css">
+
+    <title>Colegio Grande - Docentes</title>
+</head>
+
+<body>
+    <img class="Icono hamburguesa" src="../assets/icons/menu.svg" alt="">
+    <nav class="nav-bar ver  ">
+        <ul class="menu">
+           <a href="../index.html"> <li> <img src="../assets/icons/home 1.svg" alt="Icono Incio"> INICIO</li></a>
+            <a href="maestros.html"><li> <img src="../assets/icons/aula 1.svg" alt="Icono Maestros"> DOCENTES</li></a>
+            <a href="materias.html"><li> <img src="../assets/icons/libro 1.svg" alt="Icono Materias"> MATERIAS<ul class="submenu">
+                <li><a href="asignar_materia_profesor.html"> Docente</a></li>
+                <li><a href="asignar_materia_alumno.html"> Alumno</a></li>
+                </ul></li></a>
+            <a href="alumnos.html"><li> <img src="../assets/icons/sombrero-de-graduacion 1.svg" alt="Icono Alumnos"> ALUMNOS</li></a>
+            <a href="notas.html"><li> <img src="../assets/icons/los-grados 1.svg" alt="Icono Notas"> NOTAS</li></a>
+            <a href="periodos.html"><li> <img src="../assets/icons/calendar.svg" alt="Icono Periodo"> PERIODOS</li></a>
+            <a href="reportes.html"><li> <img src="../assets/icons/lista-de-verificacion 1.svg" alt="Icono Reportes"> REPORTES</li></a>
+            </ul> 
+    </nav>
+
+    <section class="seccionFormulario ver hidden">
+        <h1 class="tituloForm hidden">Agregar Docentes</h1>
+        <form action="" class="frm formulario" id="formulario">
+            <div class="contenedorInputs">
+                <div>
+                    <div class="formulario__grupo" id="grupo__nombre">
+                    <label for="nombre" class="formulario__label">Nombre:</label>
+                    <div class="formulario__grupo-input">
+                    <input type="text" id="nombre" class="formulario__input" name="nombre" placeholder="Escribe el Nombre">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El nombre debe tener al menos un digito y solo puede contener letras y espacios</p>
+                </div>
+                </div>
+                <div class="formulario__grupo" id="grupo__apellido">
+                    <label for="apellido" class="formulario__label">Apellido:</label>
+                    <div class="formulario__grupo-input">
+                    <input type="text" id="apellido" class="formulario__input" name="apellido" placeholder="Escribe el Apellido">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El apellido debe tener al menos un digito y solo puede contener letras y espacios</p>
+                </div>
+                <div class="formulario__grupo" id="grupo__documento">
+                    <label for="documento" class="formulario__label">Documento:</label>
+                    <div class="formulario__grupo-input">
+                    <input type="number" id="documento" class="formulario__input" name="documento" placeholder="Escribe la identificacion">
+                    <i class="formulario__validacion-estado documento fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El documento debe tener al menos siete digitos y solo acepta numeros</p>
+            </div>
+                <div>
+                    <label for="tipoId" class="formulario__label">Tipo Documento:</label>
+                    <select id="tipoId" class="formulario__input">
+                        <option>Selecione...</option>
+                        <option value="1">CC</option>
+                        <option value="2">TI</option>
+                    </select>
+                </div>
+        </div>
+        <div class="buttons">
+            <input type="button" value="Agregar" id="ButtonAdd">
+            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado con Exito!!</p> 
+        </div>
+        </form>
+        <hr>
+    </section>
+
+    <section class="seccionTabla ver hidden">
+        <div class="encabezadoTabla">
+            <h1 class="tituloTabla">Gestionar Docentes</h1>
+            <div>
+                <input class="form-control col-md-6 light-table-filter" data-table="order-table" type="text"
+                    placeholder="Buscar..." id="BuscarId">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table id="example" class="table table-bordered order-table " style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Identificación</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Tipo documento</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody">
+                            <tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="modalUpdate">
+        <div class="headerModal">
+            <h2>Editar Docente</h2>
+            <input type="button" value="X" class="cerrar" id="ButtonCloseEditar" onclick="CloseUpdate()">
+        </div>
+        <form class="frmEditar">
+            <div class="contenedorInputsEditar">
+                <div>
+                    <input type="hidden">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombreEditar" placeholder="Escribe el Nombre">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellidoEditar" placeholder="Escribe el Apellido">
+                    <label for="estado">Estado Actual:</label>
+                    <select id="estadoEditar">
+                        <option value="1">Activo</option>
+                        <option value="2">Inactivo</option>
+                    </select>
+                </div>
+                <div>
+
+                    <label for="documento">Documento:</label>
+                    <input type="number" id="documentoEditar" placeholder="Escribe la identificacion">
+                    <label for="tipoId">Tipo Documento:</label>
+                    <select id="tipoIdEditar">
+                        <option>Selecione...</option>
+                        <option value="1">CC</option>
+                        <option value="2">TI</option>
+                    </select>
+                </div>
+            </div>
+            <div class="buttonsEditar">
+                <input type="button" value="Guardar Cambios" class="guardarCambios" id="ButtonAddEditar">
+            </div>
+        </form>
+    </div>
+    <script src="../assets/JavaScript/Persona.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " > </script>
+    <script src="../assets/JavaScript/funcionesExternas.js"></script>
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="../assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../assets/popper/popper.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
