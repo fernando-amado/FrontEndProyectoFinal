@@ -14,7 +14,9 @@ let apellidoEditar = document.getElementById("apellidoEditar");
 let tipoIdEditar = document.getElementById("tipoIdEditar");
 let estadoEditar = document.getElementById("estadoEditar");
 let htmlLocation = window.location;
-const urlApi = "http://fercho12345-001-site1.itempurl.com";
+//const urlApi = "http://fercho12345-001-site1.itempurl.com";
+const urlApi = "http://localhost:52811";
+const urlHost="http://127.0.0.1:5500";
 boton.addEventListener("click", () => {
 	inputNombre = document.getElementById("nombre").value;
 	inputApellido = document.getElementById("apellido").value;
@@ -22,7 +24,7 @@ boton.addEventListener("click", () => {
 	inputDocumento = document.getElementById("documento").value;
 	Agregar(inputNombre, inputApellido, inputTipo, inputDocumento);
 });
-
+console.log(window.location)
 function listarPersona() {
 	fetch(urlApi+"/api/Personas/ConsultarTodo")
 		.then((response) => response.json())
@@ -30,12 +32,12 @@ function listarPersona() {
 			personas.forEach((persona) => {
 				if (
 					persona.Tp_Id == 1 &&
-					htmlLocation == urlApi+"/Front/views/alumnos.html"
+					htmlLocation == urlHost+"/views/alumnos.html"
 				) {
 					llenarTablaPersona(persona);
 				} else if (
 					persona.Tp_Id == 2 &&
-					htmlLocation == urlApi+"/Front/views/maestros.html"
+					htmlLocation == urlHost+"/views/maestros.html"
 				) {
 					llenarTablaPersona(persona);
 				}
@@ -85,7 +87,7 @@ function Agregar(nombre, apellido, tdoc, ndoc) {
 			TDoc_Id: tdoc,
 			NDoc: ndoc,
 			Activo: true,
-			Tp_Id: htmlLocation == urlApi+"/Front/views/alumnos.html" ? 1 : 2
+			Tp_Id: htmlLocation == urlHost+"/views/alumnos.html" ? 1 : 2
 		})
 	}).then((response) => {
 		if (response.status == 400) {
@@ -150,7 +152,7 @@ function Editar(id, nDoc, nombres, apellidos, tDoc, estado) {
 				NDoc: nDoc,
 				Activo: estado == "1" ? true : false,
 
-				Tp_Id: htmlLocation == urlApi+"/Front/views/alumnos.html" ? 1 : 2
+				Tp_Id: htmlLocation == urlHost+"/views/alumnos.html" ? 1 : 2
 			})
 		})
 			.then((response) => {
@@ -193,26 +195,26 @@ function Editar(id, nDoc, nombres, apellidos, tDoc, estado) {
 	}
 }
 
-//function Eliminar(id) {
-//	ConfirmarEliminar();
-//	fetch(urlApi+"/api/Personas/" + id, {
-//		headers: {
-//			Accept: "application/json",
-//			"Content-Type": "application/json"
-//		},
-//		method: "DELETE",
-//		body: JSON.stringify({
-//			Id: parseInt(id)
-//		})
-//	}).then((response) => {
-//		if (response.status == 400) {
-//			swal("¡Transaccion Fallida! ", "Alumno asignado a una materia", "error");
-//		} else {
-//			let tr = document.querySelector(`tr[data-id="${id}"]`);
-//			tabla.removeChild(tr);
-//		}
-//	});
-//}
+function Eliminar(id) {
+	ConfirmarEliminar();
+	fetch(urlApi+"/api/Personas/" + id, {
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json"
+		},
+		method: "DELETE",
+		body: JSON.stringify({
+			Id: parseInt(id)
+		})
+	}).then((response) => {
+		if (response.status == 400) {
+			swal("¡Transaccion Fallida! ", "Persona asignado a una materia", "error");
+		} else {
+			let tr = document.querySelector(`tr[data-id="${id}"]`);
+			tabla.removeChild(tr);
+		}
+	});
+}
 
 function ConfirmarEliminar(id) {
 	swal({

@@ -1,6 +1,6 @@
 let imagenes = [
   "assets/img/Colegio1.png",
-  "assets/img/Colegio2.jpeg",
+  "assets/img/Colegio2.jpg",
   "assets/img/Colegio3.jpg",
 ];
 let slide = document.querySelector(".imgIndexSlide");
