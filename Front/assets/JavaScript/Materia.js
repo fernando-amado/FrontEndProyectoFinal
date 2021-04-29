@@ -6,8 +6,8 @@ const inputId = document.getElementById("idMateria");
 const nombreEditar = document.getElementById("nombreEditar");
 const btnGuardarMateria = document.getElementById("ButtonAddEditar");
 const arrayMaterias = [];
-// const urlApi = "http://fercho12345-001-site1.itempurl.com";
-const urlApi = "http://localhost:52811";
+//const urlApi = "http://fercho12345-001-site1.itempurl.com";
+const urlApi = "http://localhost:52811"
 
 btnGuardarMateria.addEventListener("click", () => {
   Editar(inputId.value, nombreEditar.value);
@@ -25,7 +25,7 @@ function listarMateria() {
 }
 
 boton.addEventListener("click", (e) => {
-  if (arrayMaterias.some((materias) => inputNombre.value == materias)) {
+  if (arrayMaterias.some((materias) => inputNombre.value == materias) || inputNombre.value == "" || inputNombre.value == null || inputNombre.value == undefined) {
 	  e.preventDefault();
       swal(
         "¡Transaccion Fallida! ",

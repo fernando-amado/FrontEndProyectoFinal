@@ -47,14 +47,15 @@ button:hover{
 
 .slideimg{
     position: absolute;
-    width: 80%;
-    margin-left: 18%;
-    top: 71px;
+    width: 77%;
+    margin-left: 19.5%;
+    top: 80px;
 }
 .slideimg .imgIndexSlide{
     width: 100%;
     max-height: 480px;
-    height:350px;
+    height:380px;
+    border-radius: 15px;
 }
 .slideimg .icons{
     position: absolute;

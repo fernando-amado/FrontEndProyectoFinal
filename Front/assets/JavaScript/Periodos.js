@@ -9,18 +9,26 @@ const PorcentajeEditar=document.getElementById("PorcentajeEditar");
 let otrosporcentajes =[]
 let totalArregloPorcentaje=0;
 const urlApi = "http://fercho12345-001-site1.itempurl.com";
+const urlHost = "http://localhost:52811"
 //const urlApi = "https://localhost:44351";
 
 boton.addEventListener("click", () => {
-	Agregar(inputNombre.value,porcentaje.value);
+	if(inputNombre.value == "" 
+	|| inputNombre.value == null || inputNombre.value == undefined || parseInt(porcentaje.value) <=0
+	|| porcentaje.value == null || porcentaje.value == undefined){
+	swal(
+        "¡Transaccion Fallida! ",
+        "-Error el porcentaje es incorrecto \n -Campos Vacios",
+        "error"
+    );}else
+	{Agregar(inputNombre.value,porcentaje.value)};
 });
-
 btnGuardarPeriodo.addEventListener("click", () => {
 	Editar(inputId.value, nombreEditar.value,PorcentajeEditar.value);
 });
 
 function listarPeriodo() {
-	fetch(urlApi+"/api/Periodoes")
+	fetch(urlHost+"/api/Periodoes")
 		.then((response) => response.json())
 		.then((periodos) =>
 			periodos.forEach((periodo) => {
@@ -44,7 +52,7 @@ function llenarTabla(m) {
 }
 
 function Agregar(nombre,porcentaje) {
-	fetch(urlApi +"/api/Periodoes", {
+	fetch(urlHost +"/api/Periodoes", {
 		headers: {
 			Accept: "application/json",
 			"Content-Type": "application/json"
@@ -74,7 +82,7 @@ function AbrirEditar(id, nombre,porcentaje) {
 }
 
 function Editar(id, nombre,porcentaje) {
-	fetch("https://localhost:44351/api/Periodoes/" + id, {
+	fetch(urlHost+"/api/Periodoes/" + id, {
 		headers: {
 			Accept: "application/json",
 			"Content-Type": "application/json"
@@ -96,7 +104,7 @@ function Editar(id, nombre,porcentaje) {
 }
 
 function Eliminar(id) {
-	fetch(urlApi+"/api/Periodoes/" + id, {
+	fetch(urlHost+"/api/Periodoes/" + id, {
 		headers: {
 			Accept: "application/json",
 			"Content-Type": "application/json"

@@ -10,8 +10,10 @@ const nombreMateria = document.getElementById("nombreMateria");
 const personaEditar = document.getElementById("personaEditar");
 const htmlLocation = window.location.href;
 const arrayMateria = [];
+let arrayalumnos=[]
 // const urlApi = "http://fercho12345-001-site1.itempurl.com";
 const urlApi = "http://localhost:52811";
+const urlHost="http://127.0.0.1:5500";
 
 function seleccionarMateria(select) {
   fetch(urlApi+"/api/Materias")
@@ -27,11 +29,12 @@ function seleccionarPersona(select) {
     .then((response) => response.json())
     .then((personas) =>
       personas.forEach((persona) => {
-        if (persona.Tp_Id == 2 && htmlLocation == urlApi+"/views/asignar_materia_profesor.html" && persona.Activo) 
+        if (persona.Tp_Id == 2 && htmlLocation == urlHost+"/views/asignar_materia_profesor.html" && persona.Activo) 
         {
           select.innerHTML += `<option value = ${persona.Id}>  ${persona.Nombres} ${persona.Apellidos} </option>`;
-        }else if(persona.Tp_Id == 1 && htmlLocation == urlApi+"/views/asignar_materia_alumno.html" && persona.Activo){
+        }else if(persona.Tp_Id == 1 && htmlLocation == urlHost+"/views/asignar_materia_alumno.html" && persona.Activo){
           select.innerHTML += `<option value = ${persona.Id}>  ${persona.Nombres} ${persona.Apellidos} </option>`; 
+		  arrayalumnos.push(persona)
         }
       })
     );
@@ -51,7 +54,7 @@ function llenarTabla(materias) {
     if (
       materia.TipoPersona == 2 &&
       htmlLocation ==
-        "http://fercho12345-001-site1.itempurl.com/Front/views/asignar_materia_profesor.html"
+        urlHost+"/views/asignar_materia_profesor.html"
     ) {
       html += `<tr id="tr" data-id="${materia.Id}">
           <td>${materia.NombrePersona}  ${materia.ApellidoPersona}</td>
@@ -62,7 +65,7 @@ function llenarTabla(materias) {
 
           </tr>`;
           tabla.innerHTML = html;
-    } else if(materia.TipoPersona == 1 && htmlLocation == "http://fercho12345-001-site1.itempurl.com/Front/views/asignar_materia_alumno.html"){
+    } else if(materia.TipoPersona == 1 && htmlLocation == urlHost+"/views/asignar_materia_alumno.html"){
       html += `<tr id="tr" data-id="${materia.Id}">
           <td>${materia.NombrePersona}  ${materia.ApellidoPersona}</td>
           <td>${materia.Materia}</td>
@@ -91,10 +94,10 @@ function Agregar(Persona, Materia) {
 	})
 		.then((response) => {
 			if(response.status == 400){
-			swal("¡Transaccion Fallida! " , "¡Verifique que los campos esten completos! " , "error")
+			swal("¡Transacción Fallida! " , "¡Verifique que los campos esten completos! " , "error")
 		}else{
 			response.json().then((data) => {
-				swal ( "¡Transaccion Exitosa! " , "¡Se ha asigando la materia al profesor! " , "success" );
+				swal ( "¡Transacción Exitosa! " , "¡Se ha asignado la materia al docente! " , "success" );
 				consultar(data)}, limpiarDatos())
 				nombrePersona.value = "";
 				nombreMateria.value = "";
@@ -121,7 +124,15 @@ fetch(urlApi+"/api/PersonaMaterias/" + id, {
 			Materia_Id: Materia
 		})
 	}).then((data) => {
-		consultar(data);
+		llenarTabla(data),
+		swal(
+			"¡Transacción Exitosa! ",
+			"¡Se ha editado la asignación! ",
+			"success"
+		);
+		// let tr = document.querySelector(`tr[data-id="${id}"]`)
+		// tr.innerHTML=`<td>${alumnos[0].Nombres}</td>
+		// <td>${materias[0].Materia}</td>`
 	})
 		CloseUpdate();
 }
@@ -144,8 +155,8 @@ function Eliminar(id) {
 }
 function ConfirmarEliminar(id){
 	swal({
-		title: "Esta seguro de eliminar el persona?",
-		text: "No podra recuperar la información del persona si lo elimina",
+		title: "¿Esta seguro de eliminar la persona?",
+		text: "No podra recuperar la información de la persona si lo elimina",
 		icon: "warning",
 		buttons: true,
 		dangerMode: true,
@@ -153,18 +164,18 @@ function ConfirmarEliminar(id){
 	  .then((willDelete) => {
 		if (willDelete) {
 			Eliminar(id);
-		  swal("El maestro ha eliminado la asignaición correctamente", {
+		  swal("El docente ha eliminado la asignación correctamente", {
 			icon: "success",
 		  });
 		} else {
-		  swal("No se elimino el maestro");
+		  swal("No se elimino el docente");
 		}
 	  });
 }
 function validarRepeticion(idP,idM){
   console.log("funcion sirve");
   (arrayMateria.some(personaMateria => ((personaMateria.IdPersona == idP) && (personaMateria.IdMateria == idM))) == true) ? 
-  swal("¡Transaccion Fallida! ", "-No puedes agregar esta persona porque ya tiene asignada una materia", "error")
+  swal("¡Transacción Fallida! ", "-No puedes agregar esta persona porque ya tiene asignada una materia", "error")
   : Agregar(idP, idM),
   console.log('siempre se ejectua esto despues del trinario')
 }
@@ -178,7 +189,7 @@ boton.addEventListener("click", () => {
 });
 btnEditarPersona.addEventListener("click", () => {
   (arrayMateria.some(personaMateria => ((personaMateria.IdPersona == personaEditar.value) && (personaMateria.IdMateria == MateriaEditar.value))) == true) ? 
-  swal("¡Transaccion Fallida! ", "-No puedes editar esta persona porque ya tiene esa materia asiganda", "error")
+  swal("¡Transacción Fallida! ", "-No puedes editar esta persona porque ya tiene esa materia asignada", "error")
   :	Editar(idMateriaPersona.value, personaEditar.value, MateriaEditar.value);
 });
 
