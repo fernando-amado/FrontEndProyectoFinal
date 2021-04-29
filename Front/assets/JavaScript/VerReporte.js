@@ -7,7 +7,8 @@ let nombreAlumno = document.getElementById("NombreEstudiante")
 let documento = document.getElementById("identificacion")
 let tipoDoc = document.getElementById("tipoDocumento")
 const tabla = document.querySelector(".TablaReporte");
-const urlApi = "http://fercho12345-001-site1.itempurl.com";
+//const urlApi = "http://fercho12345-001-site1.itempurl.com";
+const urlApi = "http://localhost:52811";
 let promedio=[]
 async function listarNotas(a) {
     await fetch(urlApi+"/api/Personas/"+a)
@@ -39,9 +40,7 @@ function llenarTabla(notas) {
                     <td id="info">${n.Materia}</td> `
                 for (let index = 0; index < n.Notas.length; index++) {
                     
-                    html+=`<td id="infoNotas">${(n.Notas[index]==null||n.Notas[index]==undefined)?"Aún no tiene nota asignada":n.Notas[index].Notas}</td>
-                    
-                    `
+                    html+=`<td id="infoNotas">${(n.Notas[index]==null||n.Notas[index]==undefined)?"Aún no tiene nota asignada":n.Notas[index].Notas}</td>`
                     
                 }
                 let resultado=(promedio.reduce(function(a, b){ return a + b; })).toFixed(2)

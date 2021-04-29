@@ -1,5 +1,6 @@
 const tabla = document.querySelector(".tbody");
-const urlApi = "http://fercho12345-001-site1.itempurl.com";
+//const urlApi = "http://fercho12345-001-site1.itempurl.com";
+const urlApi = "http://localhost:52811";
 function listarAlumno() {
 	fetch(urlApi+"/api/Personas/ConsultarTodo")
 		.then((response) => response.json())

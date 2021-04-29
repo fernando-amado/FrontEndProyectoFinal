@@ -34,24 +34,19 @@ async function listarNotas(arrayperiodos) {
 }
 
 function theadperiodos(periodos) {
-  const thead= document.querySelector(".theadNotas");
-  let html = "" 
-  const ConcatenarTh = function(html){
-    return function(texto){
-      return html += `<th class="th">${texto}</th>`;
-    };
+  let thead = document.querySelector(".theadNotas")
+  let html = " "
+  function crearTh(texto) {
+    let td = document.createElement("th");
+    td.innerHTML=texto;
+    return td;
   }
-  const iHtml = ConcatenarTh(html); 
-  html += `<tr>`;
-   iHtml("Nombre Estudiante") 
-  iHtml("Materia") 
-      periodos.forEach(p => {
-         iHtml("Nota "+p.NombreP+" Periodo");
-        
-      });
-   iHtml("Acción")
-  html += `</tr>`;
-  thead.innerHTML=html;	
+  let tr = document.createElement("tr");
+  tr.appendChild(crearTh("Nombre del Estudiante"))
+  tr.appendChild(crearTh("Materia"))
+    periodos.forEach(periodo => tr.appendChild(crearTh(periodo.NombreP+" "+periodo.Porcentaje+"%")))
+  
+  thead.appendChild(tr);	
 }
 
 
