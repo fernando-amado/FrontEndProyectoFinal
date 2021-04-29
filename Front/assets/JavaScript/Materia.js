@@ -6,7 +6,8 @@ const inputId = document.getElementById("idMateria");
 const nombreEditar = document.getElementById("nombreEditar");
 const btnGuardarMateria = document.getElementById("ButtonAddEditar");
 const arrayMaterias = [];
-const urlApi = "http://fercho12345-001-site1.itempurl.com";
+// const urlApi = "http://fercho12345-001-site1.itempurl.com";
+const urlApi = "http://localhost:52811";
 
 btnGuardarMateria.addEventListener("click", () => {
   Editar(inputId.value, nombreEditar.value);

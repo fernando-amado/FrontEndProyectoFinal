@@ -10,7 +10,8 @@ const nombreMateria = document.getElementById("nombreMateria");
 const personaEditar = document.getElementById("personaEditar");
 const htmlLocation = window.location.href;
 const arrayMateria = [];
-const urlApi = "http://fercho12345-001-site1.itempurl.com";
+// const urlApi = "http://fercho12345-001-site1.itempurl.com";
+const urlApi = "http://localhost:52811";
 
 function seleccionarMateria(select) {
   fetch(urlApi+"/api/Materias")
@@ -26,10 +27,10 @@ function seleccionarPersona(select) {
     .then((response) => response.json())
     .then((personas) =>
       personas.forEach((persona) => {
-        if (persona.Tp_Id == 2 && htmlLocation == "http://fercho12345-001-site1.itempurl.com/Front/views/asignar_materia_profesor.html" && persona.Activo) 
+        if (persona.Tp_Id == 2 && htmlLocation == urlApi+"/views/asignar_materia_profesor.html" && persona.Activo) 
         {
           select.innerHTML += `<option value = ${persona.Id}>  ${persona.Nombres} ${persona.Apellidos} </option>`;
-        }else if(persona.Tp_Id == 1 && htmlLocation == "http://fercho12345-001-site1.itempurl.com/Front/views/asignar_materia_alumno.html" && persona.Activo){
+        }else if(persona.Tp_Id == 1 && htmlLocation == urlApi+"/views/asignar_materia_alumno.html" && persona.Activo){
           select.innerHTML += `<option value = ${persona.Id}>  ${persona.Nombres} ${persona.Apellidos} </option>`; 
         }
       })
