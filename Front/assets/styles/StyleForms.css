@@ -148,11 +148,14 @@ color: #bb2929;
 }
 .seccionTabla {
     position: absolute;
-top: 67%;
+    top: 67%;
     left: 18%;
     width: 80%;
     overflow: scroll;
     overflow-x: hidden;
+}
+.topTabla{
+    top: 20px;
 }
 .encabezadoTabla{
     background-color: #023859;
@@ -199,6 +202,9 @@ top: 67%;
 }
 .buttonEditar{
     background-color: #023859;
+}
+button:disabled {
+    background-color: silver;
 }
 .buttonEliminar{
     background-color: #e9312a;
